@@ -4,9 +4,13 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// In-memory storage
-let dataStore = [];
-let currentId = 1;
+// In-memory storage with initial data
+let dataStore = [
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+    { id: 3, name: 'Item 3' }
+];
+let currentId = 4;  // Start ID from next available value
 
 // Create
 app.post('/api/data', (req, res) => {
