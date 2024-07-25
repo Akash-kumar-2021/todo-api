@@ -1,17 +1,20 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors()); // Enable CORS
 app.use(express.json());
 
 // In-memory storage with initial data
 let dataStore = [
     { id: 1, name: 'Akash' },
-    { id: 2, name: 'kumar' },
+    { id: 2, name: 'Kumar' },
     { id: 3, name: 'Tum Bin' },
     { id: 4, name: 'Checking' },
+    { id: 5, name: 'Checking cron added' },
 ];
-let currentId = 4;  // Start ID from next available value
+let currentId = 4; // Start ID from next available value
 
 // Create
 app.post('/api/data', (req, res) => {
