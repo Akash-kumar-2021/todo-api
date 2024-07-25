@@ -6,9 +6,10 @@ app.use(express.json());
 
 // In-memory storage with initial data
 let dataStore = [
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' }
+    { id: 1, name: 'Akash' },
+    { id: 2, name: 'kumar' },
+    { id: 3, name: 'Tum Bin' },
+    { id: 4, name: 'Checking' },
 ];
 let currentId = 4;  // Start ID from next available value
 
