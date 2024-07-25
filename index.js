@@ -53,6 +53,7 @@ app.put('/api/data/:id', (req, res) => {
 // Delete
 app.delete('/api/data/:id', (req, res) => {
     const itemIndex = dataStore.findIndex(d => d.id === parseInt(req.params.id));
+    console.log(`Request to delete ID: ${req.params.id}`); // Debugging line
     if (itemIndex > -1) {
         console.log('Item found, deleting:', dataStore[itemIndex]); // Debugging line
         dataStore.splice(itemIndex, 1);
