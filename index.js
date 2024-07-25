@@ -14,7 +14,7 @@ let dataStore = [
     { id: 4, name: 'Checking' },
     { id: 5, name: 'Checking cron added' },
 ];
-let currentId = 4; // Start ID from next available value
+let currentId = 6; // Start ID from next available value
 
 // Create
 app.post('/api/data', (req, res) => {
@@ -52,9 +52,7 @@ app.put('/api/data/:id', (req, res) => {
 
 // Delete
 app.delete('/api/data/:id', (req, res) => {
-    const itemId = parseInt(req.params.id);
-    console.log(`Request to delete item with ID: ${itemId}`); // Debugging line
-    const itemIndex = dataStore.findIndex(d => d.id === itemId);
+    const itemIndex = dataStore.findIndex(d => d.id === parseInt(req.params.id));
     if (itemIndex > -1) {
         console.log('Item found, deleting:', dataStore[itemIndex]); // Debugging line
         dataStore.splice(itemIndex, 1);
@@ -65,8 +63,6 @@ app.delete('/api/data/:id', (req, res) => {
     }
     console.log('Current dataStore:', dataStore); // Debugging line
 });
-
-
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
