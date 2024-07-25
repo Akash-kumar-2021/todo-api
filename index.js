@@ -52,15 +52,20 @@ app.put('/api/data/:id', (req, res) => {
 
 // Delete
 app.delete('/api/data/:id', (req, res) => {
-    console.log('Request to delete item with ID:', req.params.id); // Debugging line
-    const itemIndex = dataStore.findIndex(d => d.id === parseInt(req.params.id));
+    const itemId = parseInt(req.params.id);
+    console.log(`Request to delete item with ID: ${itemId}`); // Debugging line
+    const itemIndex = dataStore.findIndex(d => d.id === itemId);
     if (itemIndex > -1) {
+        console.log('Item found, deleting:', dataStore[itemIndex]); // Debugging line
         dataStore.splice(itemIndex, 1);
         res.status(204).end();
     } else {
+        console.log('Item not found, cannot delete'); // Debugging line
         res.status(404).json({ message: 'Item not found' });
     }
+    console.log('Current dataStore:', dataStore); // Debugging line
 });
+
 
 
 app.listen(port, () => {
